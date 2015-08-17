@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="Article" class="no-js" lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- opengraph tags -->
+    <meta property="og:site_name" content="Article">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Article">
+    <meta property="og:description" content="Article">
+
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap/css/bootstrap.min.css">
+    <script src="{{ STATIC_URL }}libraries/vendor/moment.min.js"></script>
+    <script src="{{ STATIC_URL }}libraries/vendor/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}libraries/vendor/jquery.js"><\/script>')</script>
+    <script src="{{ STATIC_URL }}libraries/angular/angular.min.js"></script>
+    <script src="{{ STATIC_URL }}libraries/angular/angular-resource.min.js"></script>
+    <script src="{{ STATIC_URL }}libraries/angular/angular-cookies.min.js"></script>
+    <script src="{{ STATIC_URL }}libraries/angular/angular-sanitize.min.js"></script>
+    <script src="{{ STATIC_URL }}libraries/vendor/ui-bootstrap-tpls-0.6.0.js"></script>
+    <script src="{{ STATIC_URL }}libraries/vendor/angular-file-upload.min.js"></script>
+    <script src="{{ STATIC_URL }}libraries/vendor/ng-infinite-scroll.min.js"></script>
+
+    {% block extra_head %}{% endblock %}
+
+    <title>
+        Article App
+    </title>
+</head>
+
+<body data-spy="scroll" id="index" style="zoom: 1;" ng-controller="ArticleController" ng-init="initialize('{{ user.is_authenticated }}')">
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+{% block site_wrapper %}{% endblock %}
+
+</body>
+</html>

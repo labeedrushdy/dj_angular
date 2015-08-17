@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="span12 main" ng-show="displayToggle">
+        <div class="row">
+            <div class="span9">
+                <div class="article-detail-title">
+                    {[{ article.title }]}
+                </div>
+                <div class="article-detail-body" ng-bind-html-unsafe="article.description">
+                    {[{ article.description }]}
+                </div>
+
+                <div class="bottom-links-wrapper">
+                    <a ng-show="globals.is_authenticated" class="btn-small btn-primary" ng-click="adminOpen('edit')"> Edit</a>
+                    <a ng-show="globals.is_authenticated" class="btn-small btn-primary" ng-click="remove()">Delete</a>
+                    <a class="btn-small btn-primary" href="#/"> Go back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="span12 main" ng-hide="displayToggle">
+        <ul class="article-bullet" >
+            <li class="inline list-article" ng-repeat="article in articles">
+                <div class="list-article">
+                    <div class="list-article-title">
+                        <a class="clip-open" href="{[{article.api_url}]}">
+                            {[{article.title}]}
+                        </a>
+                    </div>
+                    <div class="list-article-info">
+                        <div> Read: {[{ article.count }]} times </div>
+                    </div>
+
+                    <div class="list-article-summery" ng-bind-html-unsafe="article.description">
+                        {[{ article.description |truncate:150 }]}
+                    </div>
+                    <div>
+                        <a class="clip-open list-article-read-more" href="{[{article.api_url}]}">
+                            Read More
+                        </a>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+        <div style="clear: both"></div>
+        <div class="article-pager">
+            <a type="submit" class="btn-small btn-primary" ng-click="pagination(nextPage)">next page>></a>
+        </div>
+    </div>
+</div>

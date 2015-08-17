@@ -1,0 +1,45 @@
+{% extends "articleBase.html" %}
+{% load i18n %}
+{% block extra_head %}
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <script src="{{ STATIC_URL }}articles/js/app/app.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/controllers/app-controller.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/services/app-service.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/services/article-service.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/directives/directives.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/filters/filters.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/controllers/list-controller.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/controllers/admin-controller.js"></script>
+    <script src="{{ STATIC_URL }}articles/js/app/controllers/detail-controller.js"></script>
+    <link rel="stylesheet" href="{{STATIC_URL}}css/index.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}articles/css/article.css">
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="/">Blog</a>
+                <ul class="nav navbar-nav pull-right">
+                    <li ng-hide="globals.is_authenticated"><a href="/djadmin"><i title="login" class="icon-user icon-white"></i></a></li>
+                    <li ng-show="globals.is_authenticated"><a href="/admin/logout/"><i title="logout" class="icon-user icon-white"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="padded-content">
+        <div id="main-content" class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="pending-bg" pending-bar>
+                        <div class="alert alert-warning">loading ...</div>
+                    </div>
+                </div>
+            </div>
+
+            <ng-view view-state></ng-view>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_content %}
+{% endblock %}

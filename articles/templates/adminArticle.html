@@ -1,0 +1,47 @@
+<div class="row">
+    <table class="span12 admin-top">
+        <tbody>
+        <tr>
+            <td><a class="btn-small btn-primary" href="#/admin/add">+Add Content</a></td>
+            <td>
+                <form class="form-search">
+                    <input type="text" ng-model="keywords" placeholder="Keywords...">
+                    <button type="submit" class="btn-small btn-primary" ng-click="searchArticle(keywords)">Search</button>
+                    <button type="submit" class="btn-small btn-primary" ng-click="searchArticle('')">Show All</button>
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <table class="span12 admin-main table" infinite-scroll="pagination('{[{nextPage}]}')">
+        <tbody>
+        <tr class="table-header">
+            <td>TITLE</td>
+            <td>CREATED</td>
+            <td>AUTHOR</td>
+            <td>OPERATION</td>
+            <td>OPERATION</td>
+        </tr>
+        <tr ng-repeat="article in articles">
+            <td class="admin-links">
+                <a href="{[{article.api_url}]}">
+                    {[{article.title}]}
+                </a>
+            </td>
+            <td>
+                {[{article.created_on | date:'dd MMM yyyy-h:mma'}]}
+            </td>
+            <td>
+                {[{article.author}]}
+            </td>
+            <td>
+                <a class="btn-small btn-success" href="#/admin/edit/{[{article.id}]}">Edit</a>
+            </td>
+            <td>
+                <a class="btn-small btn-warning" ng-click="remove(article)">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

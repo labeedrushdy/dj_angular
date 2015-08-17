@@ -1,0 +1,41 @@
+<div class="row">
+    <div>
+        <div>
+            <form class="form-search">
+                <input class="home-search-box" type="text" ng-model="keywords" placeholder="Keywords...">
+                <button type="submit" class="btn-small btn-primary" ng-click="searchArticle(keywords)">Search</button>
+                <button type="submit" class="btn-small btn-warning" ng-click="searchArticle('')">Show All</button>
+            </form>
+        </div>
+    </div>
+    <div class="span12 main">
+        <ul class="article-bullet" >
+            <li class="inline list-article" ng-repeat="article in articles">
+                <div class="list-article">
+                    <div class="list-article-title">
+                        <a class="clip-open" href="{[{article.api_url}]}">
+                            {[{article.title}]}
+                        </a>
+                    </div>
+                    <div class="list-article-info">
+                        <div> Read: {[{ article.count }]} times </div>
+                    </div>
+
+                    <div class="list-article-summery" ng-bind-html-unsafe="article.description">
+                        {[{ article.description }]}
+                    </div>
+                    <div>
+                        <a class="clip-open list-article-read-more" href="{[{article.api_url}]}">
+                            Read More
+                        </a>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+        <div style="clear: both"></div>
+        <div class="article-pager">
+            <a type="submit" class="btn-small btn-primary" ng-click="pagination(nextPage)">next page>></a>
+        </div>
+    </div>
+</div>
